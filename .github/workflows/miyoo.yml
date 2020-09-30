@@ -12,4 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build
-      run: make -f Makefile.miyoo dist
+      run: make -f Makefile.miyoo ipk -j8
+    - uses: actions/upload-artifact@v2
+      with:
+        name: artifacts
+        path: dist/*
