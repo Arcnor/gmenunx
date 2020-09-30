@@ -1,6 +1,8 @@
 PLATFORM = miyoo
 
+ifndef CROSS_COMPILE
 export CROSS_COMPILE = /opt/arm-Miyoo-linux-uclibcgnueabi/usr/bin/arm-linux-
+endif
 
 CFLAGS += -DTARGET_MIYOO
 CFLAGS += -Os
