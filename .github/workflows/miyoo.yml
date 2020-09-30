@@ -1,0 +1,15 @@
+name: Miyoo
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container:
+      image: doodlewind/miyoo_sdk:latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: make -f Makefile.miyoo
