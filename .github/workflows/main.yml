@@ -1,0 +1,46 @@
+name: GMenuNX
+
+on: [push, pull_request]
+
+jobs:
+  build-retrofw:
+    runs-on: ubuntu-latest
+    container:
+      image: arcnor/toolchain-retrofw:latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: make ipk -j8
+    - uses: actions/upload-artifact@v2
+      with:
+        name: artifacts-retrofw
+        path: dist/*
+
+  build-bittboy:
+    runs-on: ubuntu-latest
+    container:
+      image: arcnor/toolchain-bittboy:latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: make -f Makefile.miyoo ipk -j8
+    - uses: actions/upload-artifact@v2
+      with:
+        name: artifacts-bittboy
+        path: dist/*
+
+  build-gcw0:
+    runs-on: ubuntu-latest
+    container:
+      image: arcnor/toolchain-gcw0:latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: make -f Makefile.od ipk -j8
+    - uses: actions/upload-artifact@v2
+      with:
+        name: artifacts-gcw0
+        path: dist/*

@@ -1,6 +1,9 @@
 PLATFORM = od
 
+
+ifndef CROSS_COMPILE
 export CROSS_COMPILE = /opt/gcw0-toolchain/usr/bin/mipsel-linux-
+endif
 
 CFLAGS += -DTARGET_GCW0
 CFLAGS += -Os
